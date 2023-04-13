@@ -6,6 +6,7 @@ extends CharacterBody2D
 var speed = 200.0
 var gravity = 20.0
 var jump_speed = 400
+var jump_remained = 2
 
 
 func _physics_process(delta):
@@ -34,9 +35,14 @@ func move(delta: float) -> void:
 		velocity.x = 0.0
 		animation_player.play("Idle")
 	
-	
 	if is_on_floor() && Input.is_action_just_pressed("ui_jump"):
 		jump()
+		jump_remained -= 1
+	elif !is_on_floor() && Input.is_action_just_pressed("ui_jump") && jump_remained >= 1:
+		jump()
+		jump_remained -= 1
+	elif is_on_floor():
+		jump_remained = 2
 	
 	if !is_on_floor():
 		if velocity.y > 10:
