@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
+@onready var sword = $Sword
 
 var speed = 200.0
 var gravity = 20.0
@@ -24,12 +25,14 @@ func move(delta: float) -> void:
 			velocity.x = clamp(speed, 100, speed)
 			sprite_2d.flip_h = false
 			animation_player.play("Walk")
+			sword.position = abs(sword.position)
 		
 		if movement < 0.0:
 			velocity.x -= speed * delta
 			velocity.x = clamp(speed, -100, -speed)
 			sprite_2d.flip_h = true
 			animation_player.play("Walk")
+			sword.position = -abs(sword.position)
 	
 	if movement == 0.0:
 		velocity.x = 0.0
@@ -49,7 +52,14 @@ func move(delta: float) -> void:
 			animation_player.play("Fall")
 		else:
 			animation_player.play("Jump")
+	
+	if Input.is_action_just_pressed("ui_sword"):
+		attack()
 
 
 func jump():
 	velocity.y = -jump_speed
+
+
+func attack():
+	animation_player.play("Sword")
