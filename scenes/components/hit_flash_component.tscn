@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpb5faj655oig"]
+
+[ext_resource type="Script" path="res://scenes/components/hit_flash_component.gd" id="1_nrkvr"]
+[ext_resource type="Shader" path="res://vfx/whiten/whiten.gdshader" id="2_pq2yn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpa6u"]
+resource_local_to_scene = true
+shader = ExtResource("2_pq2yn")
+shader_parameter/whiten = true
+shader_parameter/mix_weight = 0.0
+shader_parameter/alpha = 1.0
+
+[node name="HitFlashComponent" type="Node"]
+script = ExtResource("1_nrkvr")
+hit_flash_material = SubResource("ShaderMaterial_fpa6u")

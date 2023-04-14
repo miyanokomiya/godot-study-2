@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://ciknc65pnhnys"]
+
+[ext_resource type="Script" path="res://scenes/ui/GUI.gd" id="1_qgmer"]
+[ext_resource type="Texture2D" uid="uid://3ix3v6arsmbo" path="res://Sprites/UI/PlayerHead1.png" id="1_qhxfk"]
+[ext_resource type="Texture2D" uid="uid://cmdl0gvy2spv2" path="res://Sprites/Interactables/coin.png" id="2_sv4v8"]
+[ext_resource type="PackedScene" uid="uid://215fd0pp6y20" path="res://scenes/ui/heart.tscn" id="4_p2lvy"]
+
+[sub_resource type="Animation" id="Animation_axjq8"]
+resource_name = "Coin"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_u50ck"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_05xqa"]
+_data = {
+"Coin": SubResource("Animation_axjq8"),
+"RESET": SubResource("Animation_u50ck")
+}
+
+[node name="GUI" type="CanvasLayer"]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+script = ExtResource("1_qgmer")
+
+[node name="PlayerLife" type="Sprite2D" parent="."]
+position = Vector2(32, 16)
+texture = ExtResource("1_qhxfk")
+
+[node name="CoinLogo" type="Sprite2D" parent="."]
+position = Vector2(56, 32)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_sv4v8")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CoinLogo"]
+autoplay = "Coin"
+libraries = {
+"": SubResource("AnimationLibrary_05xqa")
+}
+
+[node name="HeartContainer" type="HBoxContainer" parent="."]
+offset_left = 48.0
+offset_top = 9.0
+offset_right = 72.0
+offset_bottom = 19.0
+theme_override_constants/separation = 0
+
+[node name="Heart" parent="HeartContainer" instance=ExtResource("4_p2lvy")]
+layout_mode = 2
+
+[node name="Heart2" parent="HeartContainer" instance=ExtResource("4_p2lvy")]
+layout_mode = 2
+
+[node name="CoinText" type="Label" parent="."]
+offset_left = 69.0
+offset_top = 20.0
+offset_right = 93.0
+offset_bottom = 44.0

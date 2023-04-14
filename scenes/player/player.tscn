@@ -1,7 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://078d8fp4npub"]
+[gd_scene load_steps=20 format=3 uid="uid://078d8fp4npub"]
 
 [ext_resource type="Texture2D" uid="uid://ck10eb5hroymn" path="res://Player2.png" id="1_8obsa"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ucc7b"]
+[ext_resource type="PackedScene" uid="uid://byb4skpiakxcm" path="res://scenes/components/health_component.tscn" id="2_m6373"]
+[ext_resource type="PackedScene" uid="uid://b3vmhadtjij6r" path="res://scenes/components/hitbox_component.tscn" id="3_ei1hf"]
+[ext_resource type="PackedScene" uid="uid://bpb5faj655oig" path="res://scenes/components/hit_flash_component.tscn" id="3_pum4u"]
+[ext_resource type="Shader" path="res://vfx/whiten/whiten.gdshader" id="4_uer55"]
+[ext_resource type="PackedScene" uid="uid://cmf8xxnb7p2db" path="res://scenes/components/hurtbox_component.tscn" id="5_fitxe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_366qc"]
+resource_local_to_scene = true
+shader = ExtResource("4_uer55")
+shader_parameter/whiten = true
+shader_parameter/mix_weight = 0.0
+shader_parameter/alpha = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3x5ji"]
+radius = 13.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3e4a3"]
 size = Vector2(16, 27)
@@ -87,7 +102,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionShape2D:disabled")
+tracks/1/path = NodePath("SwordHitboxComponent/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -115,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionShape2D:disabled")
+tracks/1/path = NodePath("SwordHitboxComponent/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -171,7 +186,26 @@ _data = {
 size = Vector2(20, 38)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_ucc7b")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_m6373")]
+max_health = 5.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_pum4u")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_366qc")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_fitxe")]
+collision_layer = 2
+collision_mask = 4
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_3x5ji")
+debug_color = Color(0.843137, 0.345098, 0.415686, 0.556863)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8obsa")
@@ -184,15 +218,17 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_3e4a3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_lifee")
 }
 
-[node name="Sword" type="Area2D" parent="."]
+[node name="SwordHitboxComponent" parent="." instance=ExtResource("3_ei1hf")]
 position = Vector2(25, 0)
 collision_layer = 8
+damage = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordHitboxComponent"]
 shape = SubResource("RectangleShape2D_1jowy")
 disabled = true
 debug_color = Color(0.8, 0.223529, 0.352941, 0.537255)

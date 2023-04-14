@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjujj6dskbpmk"]
+[gd_scene load_steps=17 format=3 uid="uid://cjujj6dskbpmk"]
 
 [ext_resource type="Texture2D" uid="uid://c8lvq4mcfqg7" path="res://Sprites/World 1/background.png" id="1_7vq8d"]
 [ext_resource type="PackedScene" uid="uid://078d8fp4npub" path="res://scenes/player/player.tscn" id="1_8k8y8"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bsxegm7cusgs0" path="res://Sprites/World 1/Towers.png" id="8_ftigo"]
 [ext_resource type="Texture2D" uid="uid://cf2vpbpeu5ngg" path="res://Sprites/World 1/Trees.png" id="9_ii55y"]
 [ext_resource type="PackedScene" uid="uid://b03vvl0vuyato" path="res://scenes/enemy/enemy.tscn" id="13_12cm5"]
+[ext_resource type="PackedScene" uid="uid://ciknc65pnhnys" path="res://scenes/ui/GUI.tscn" id="14_5y5fp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tm216"]
 texture = ExtResource("2_xkdp8")
@@ -385,3 +386,5 @@ position = Vector2(169, 127)
 
 [node name="Enemy2" parent="." instance=ExtResource("13_12cm5")]
 position = Vector2(248, 112)
+
+[node name="GUI" parent="." instance=ExtResource("14_5y5fp")]

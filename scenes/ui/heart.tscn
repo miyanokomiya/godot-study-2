@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://215fd0pp6y20"]
+
+[ext_resource type="Texture2D" uid="uid://cnqyiuralc1ps" path="res://Sprites/UI/HeartSpriteSheetl.png" id="1_0m4ii"]
+[ext_resource type="Script" path="res://scenes/ui/heart.gd" id="1_kxpml"]
+
+[node name="Heart" type="Control"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_kxpml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_0m4ii")
+centered = false
+hframes = 5
