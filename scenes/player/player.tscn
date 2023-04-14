@@ -124,6 +124,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_state_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_uwjws"]
 resource_name = "Walk"
@@ -176,6 +190,7 @@ libraries = {
 
 [node name="Sword" type="Area2D" parent="."]
 position = Vector2(25, 0)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 shape = SubResource("RectangleShape2D_1jowy")
