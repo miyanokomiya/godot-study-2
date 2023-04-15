@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjujj6dskbpmk"]
+[gd_scene load_steps=29 format=3 uid="uid://cjujj6dskbpmk"]
 
 [ext_resource type="Texture2D" uid="uid://c8lvq4mcfqg7" path="res://Sprites/World 1/background.png" id="1_7vq8d"]
 [ext_resource type="PackedScene" uid="uid://078d8fp4npub" path="res://scenes/player/player.tscn" id="1_8k8y8"]
@@ -23,6 +23,8 @@
 [ext_resource type="AudioStream" uid="uid://voh37d2eaaiq" path="res://Audio/forest-ambience.wav" id="21_4prah"]
 [ext_resource type="PackedScene" uid="uid://canbxl5hy716p" path="res://breakable_platform/breakable_platform.tscn" id="22_fni2n"]
 [ext_resource type="PackedScene" uid="uid://bc5ym0tmt3k0q" path="res://scenes/ui/map/map.tscn" id="23_ypge2"]
+[ext_resource type="PackedScene" uid="uid://crpfvnol1475v" path="res://scenes/save_manager/save_manager.tscn" id="24_a76dy"]
+[ext_resource type="PackedScene" uid="uid://cy6wupytu1daw" path="res://scenes/save_bench/save_bench.tscn" id="25_f1vet"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tm216"]
 texture = ExtResource("2_xkdp8")
@@ -331,6 +333,9 @@ size = Vector2(20, 39)
 
 [node name="MainScene" type="Node2D"]
 
+[node name="SaveManager" parent="." node_paths=PackedStringArray("player") instance=ExtResource("24_a76dy")]
+player = NodePath("../Player")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("21_4prah")
@@ -408,6 +413,9 @@ position = Vector2(142, 149)
 
 [node name="Coin2" parent="." instance=ExtResource("15_0euwy")]
 position = Vector2(142, 122)
+
+[node name="SaveBench" parent="." instance=ExtResource("25_f1vet")]
+position = Vector2(318, 15)
 
 [node name="Door" parent="." instance=ExtResource("17_ojl0b")]
 position = Vector2(467, 129)

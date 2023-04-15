@@ -92,6 +92,21 @@ func dead():
 	on_state_finished()
 
 
+func to_dictionary() -> Dictionary:
+	return {
+		"position": [position.x, position.y],
+		"health": Globals.player_lives,
+		"coin": Globals.coin_quantity,
+	}
+
+
+func from_dictionary(data: Dictionary) -> void:
+	position = Vector2(data["position"][0], data["position"][1])
+	health_component.current_health = data["health"]
+	Globals.player_lives = data["health"]
+	Globals.coin_quantity = data["coin"]
+
+
 func on_state_finished():
 	current_state = PlayerStates.MOVE
 

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cmf8xxnb7p2db" path="res://scenes/components/hurtbox_component.tscn" id="5_fitxe"]
 [ext_resource type="AudioStream" uid="uid://714rq0las3ye" path="res://Audio/swing3.wav" id="8_2hsb8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwog3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srdxs"]
 resource_local_to_scene = true
 shader = ExtResource("4_uer55")
 shader_parameter/whiten = true
@@ -220,7 +220,7 @@ max_health = 5.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_pum4u")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_fwog3")
+hit_flash_material = SubResource("ShaderMaterial_srdxs")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_fitxe")]
 collision_layer = 2

@@ -5,6 +5,7 @@ signal coin_quantity_changed(diff: int)
 
 var player_lives = 5
 var coin_quantity = 0
+var can_save = false
 
 
 func player_damage(damage):
