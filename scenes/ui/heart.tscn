@@ -4,13 +4,13 @@
 [ext_resource type="Script" path="res://scenes/ui/heart.gd" id="1_kxpml"]
 
 [node name="Heart" type="Control"]
-custom_minimum_size = Vector2(10, 10)
+custom_minimum_size = Vector2(13, 13)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_kxpml")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("1_0m4ii")
 centered = false
 hframes = 5

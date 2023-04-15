@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://vfx/whiten/whiten.gdshader" id="4_uer55"]
 [ext_resource type="PackedScene" uid="uid://cmf8xxnb7p2db" path="res://scenes/components/hurtbox_component.tscn" id="5_fitxe"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_366qc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iukcx"]
 resource_local_to_scene = true
 shader = ExtResource("4_uer55")
 shader_parameter/whiten = true
@@ -195,7 +195,7 @@ max_health = 5.0
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_pum4u")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_366qc")
+hit_flash_material = SubResource("ShaderMaterial_iukcx")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_fitxe")]
 collision_layer = 2
