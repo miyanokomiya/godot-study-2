@@ -7,7 +7,7 @@ class_name Player
 
 enum PlayerStates {MOVE, ATTACK, HURT, DEAD}
 var current_state = PlayerStates.MOVE
-var speed = 200.0
+var speed = 120.0
 var gravity = 20.0
 var jump_speed = 400
 var jump_remained = 2
