@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var ray_cast_x = $RayCastX
 @onready var ray_cast_y = $RayCastY
 @onready var health_component = $HealthComponent
+@onready var hurtbox_component = $HurtboxComponent
+@onready var audio_stream_player = $AudioStreamPlayer
 
 var moving_left = true
 var speed = 15
@@ -12,6 +14,7 @@ var gravity = 30
 
 func _ready():
 	health_component.died.connect(on_died)
+	hurtbox_component.hit.connect(on_hit)
 
 
 func _physics_process(delta):
@@ -39,6 +42,10 @@ func floor_detect():
 	elif ray_cast_x.is_colliding() && is_on_wall():
 		moving_left = !moving_left
 		scale.x *= -1
+
+
+func on_hit(_hitbox: HitboxComponent):
+	audio_stream_player.playing = true
 
 
 func on_died():

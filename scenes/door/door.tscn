@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3msobie4ktiq"]
+[gd_scene load_steps=10 format=3 uid="uid://d3msobie4ktiq"]
 
 [ext_resource type="Script" path="res://scenes/door/door.gd" id="1_4hkb5"]
 [ext_resource type="Texture2D" uid="uid://chpt215i6rp3t" path="res://Sprites/Interactables/Door.png" id="1_oyrdc"]
+[ext_resource type="AudioStream" uid="uid://c85rsgt2q4df" path="res://Audio/1.wav" id="3_7bx0c"]
 
 [sub_resource type="Animation" id="Animation_hlarr"]
 resource_name = "Closed"
@@ -32,8 +33,9 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_3stw5"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_wvv7b"]
+resource_name = "Opened"
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [14]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +58,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_164rj"]
@@ -86,10 +88,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_wvv7b"]
-resource_name = "Opened"
-length = 0.1
+[sub_resource type="Animation" id="Animation_3stw5"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -100,7 +113,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [14]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -112,7 +125,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f42wr"]
@@ -143,3 +168,7 @@ vframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_vfpdh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7bx0c")
+volume_db = -11.488

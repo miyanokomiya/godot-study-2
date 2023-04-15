@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://sglmlr5r7aps" path="res://Sprites/Interactables/Lever.png" id="1_6sbse"]
 [ext_resource type="Script" path="res://scenes/switch/switch.gd" id="1_j28a0"]
 
-[sub_resource type="Animation" id="Animation_b6npg"]
-resource_name = "Active"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_2qu14"]
+resource_name = "Activated"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [14, 15, 16, 17, 18, 19, 20]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -28,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_w0gym"]
@@ -58,9 +57,24 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"activate_target"
+}]
+}
 
-[sub_resource type="Animation" id="Animation_2qu14"]
-resource_name = "Activated"
+[sub_resource type="Animation" id="Animation_b6npg"]
+resource_name = "Active"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -71,7 +85,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [14, 15, 16, 17, 18, 19, 20]
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -83,7 +97,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jaxg7"]
